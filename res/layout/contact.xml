@@ -1,0 +1,77 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".exploitation" >
+
+ <TableRow
+    android:id="@+id/tableRow1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="top" >
+
+    </TableRow>
+
+   <LinearLayout
+       android:id="@+id/header"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:background="#1FBEEF">
+
+       <TextView
+           android:id="@+id/Contact_ID"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_weight="2.03"
+           android:height="30dip"
+           android:text="ID"
+           android:visibility="gone"
+           android:textColorHint="@android:color/black"
+           android:width="30dip" />
+
+       <TextView
+           android:id="@+id/Contact_Nom"
+           android:layout_width="wrap_content"
+           android:layout_height="fill_parent"
+           android:layout_weight="1.20"
+           android:background="#288C28"
+           android:height="30dip"
+           android:text="Nom"
+           android:width="100dip" />
+
+       <TextView
+           android:id="@+id/Contact_Prenom"
+           android:layout_width="39dp"
+           android:layout_height="fill_parent"
+           android:layout_weight="3.60"
+           android:background="#288C28"
+           android:height="30dip"
+           android:text="Prenom"
+           android:width="100dip" />
+   </LinearLayout>
+ 
+    <!-- List Divider -->
+    <View android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:background="?android:attr/listDivider" />
+ 
+    <!-- ListView (grid_items) -->
+
+    <LinearLayout
+        android:id="@+id/layout"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/header" >
+
+        <ListView
+            android:id="@+id/listview"
+            android:layout_width="match_parent"
+            android:layout_height="264dp" >
+
+        </ListView>
+    </LinearLayout>
+</RelativeLayout>

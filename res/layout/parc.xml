@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout android:id="@+id/main"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent">
+    <!-- Header -->
+
+<TableRow
+    android:id="@+id/tableRow1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="top" >
+
+        <EditText
+            android:id="@+id/Utilisateur_Identifiant"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableLeft="@android:drawable/ic_menu_search"
+            android:ems="10" />
+
+    </TableRow>
+
+   <LinearLayout
+       android:id="@+id/header"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:background="#1FBEEF">
+
+       <TextView
+           android:id="@+id/Exploitation_ID"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_weight="2.03"
+           android:height="30dip"
+           android:text="ID"
+           android:visibility="gone"
+           android:textColorHint="@android:color/black"
+           android:width="30dip" />
+
+       <TextView
+           android:id="@+id/Exploitation_Nom"
+           android:layout_width="wrap_content"
+           android:layout_height="fill_parent"
+           android:layout_weight="4.53"
+           android:background="#288C28"
+           android:height="30dip"
+           android:text="  Nom"
+           android:width="100dip" />
+
+       <TextView
+           android:id="@+id/Exploitation_Ville"
+           android:layout_width="39dp"
+           android:layout_height="fill_parent"
+           android:layout_weight="3.60"
+           android:background="#288C28"
+           android:height="30dip"
+           android:text="Ville"
+           android:width="100dip" />
+   </LinearLayout>
+ 
+    <!-- List Divider -->
+    <View android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:background="?android:attr/listDivider" />
+ 
+    <!-- ListView (grid_items) -->
+    <LinearLayout android:id="@+id/layout"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent">
+        <ListView android:id="@+id/listview"
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent">
+        </ListView>
+    </LinearLayout>
+</LinearLayout>

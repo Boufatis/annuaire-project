@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+        <TextView android:id="@+id/Exploitation_ID"
+            android:text="ID"
+            android:visibility="gone"
+            android:layout_height="fill_parent"
+            android:layout_width="wrap_content"
+            android:width="45dip"
+        />
+
+        <TextView
+            android:id="@+id/Exploitation_Nom"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:text="Nom"
+            android:width="200dip" />
+
+        <TextView
+            android:id="@+id/Exploitation_Ville"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
+            android:text="Ville"
+            android:width="200dip" />
+
+</LinearLayout>
