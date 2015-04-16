@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 import org.apache.http.NameValuePair;
 
-import com.example.pnr.R;
 import com.insta.annuaire.Utilisateur;
+import com.insta.annuaire.R;
 
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
