@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package com.example.pnr;
+package com.insta.annuaire;
 
 public final class R {
     public static final class attr {
