@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import org.apache.http.NameValuePair;
 
 import com.insta.annuaire.Utilisateur;
-import com.insta.annuaire.R;
+import com.insta.gen.annuaire.R;
 
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -27,7 +27,7 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {		
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.accueil);
 		Button button = (Button) findViewById(R.id.button1);
 		button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {            	

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.insta.annuaire"
+    package="com.insta.gen.annuaire"
     android:versionCode="1"
     android:versionName="1.0" >
 <uses-permission android:name="android.permission.INTERNET"></uses-permission>
@@ -12,11 +12,11 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher" 
-        android:label="@string/app_name"
+        android:largeHeap="true"
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.insta.annuaire.activity.MainActivity"
-            android:label="Annuaire for insta" >
+            android:label="Annuaire insta" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

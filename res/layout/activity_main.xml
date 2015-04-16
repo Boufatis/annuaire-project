@@ -6,16 +6,14 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".MainActivity" >
+    tools:context=".MainActivity" 
+    android:background="@drawable/background2">
 
     <ImageView
         android:id="@+id/imageView1"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/logo" 
-        android:contentDescription="PNR - Normandie maine"/>
+        android:src="@drawable/insta" />
 
     <TextView
         android:id="@+id/lblInfoConnect"
@@ -23,8 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/Utilisateur_Identifiant"
         android:layout_alignLeft="@+id/Utilisateur_Identifiant"
-        android:layout_alignRight="@+id/Utilisateur_Identifiant"
-        android:layout_below="@+id/imageView1" />
+        android:layout_alignRight="@+id/Utilisateur_Identifiant" />
 
     <Button
         android:id="@+id/button1"
@@ -33,11 +30,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="Se connecter" />
+        android:text="Se connecter"
+        tools:ignore="HardcodedText" />
 
     <requestFocus />
-
-   
 
     <EditText
         android:id="@+id/Utilisateur_Identifiant"
@@ -47,6 +43,7 @@
         android:layout_centerHorizontal="true"
         android:ems="10"
         android:inputType="text" />
+
     <EditText
         android:id="@+id/Utilisateur_Password"
         android:layout_width="wrap_content"

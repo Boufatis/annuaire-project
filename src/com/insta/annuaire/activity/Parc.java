@@ -1,7 +1,7 @@
 package com.insta.annuaire.activity;
 
 import com.insta.annuaire.Exploitation;
-import com.insta.annuaire.R;
+import com.insta.gen.annuaire.R;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
