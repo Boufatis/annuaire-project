@@ -13,8 +13,13 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -23,6 +28,7 @@ public class MainActivity extends Activity {
 	EditText editTxt;
 	TextView txtVue;
 	Button btn;
+	CheckBox showPassword;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {		
@@ -62,7 +68,24 @@ public class MainActivity extends Activity {
 	            	}
             	}
             }
+            
+            
         });
+		
+		showPassword = (CheckBox) findViewById(R.id.checkBox1);
+		showPassword.setOnCheckedChangeListener(new OnCheckedChangeListener(){
+			EditText Utilisateur_Password = (EditText)findViewById(R.id.Utilisateur_Password);
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
+				if(!isChecked){
+					Utilisateur_Password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+					
+				}else{
+
+					Utilisateur_Password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+				}				
+			}		
+		});
 	}
 
 

@@ -33,16 +33,24 @@ public class Parc extends MainActivity {
 		
 		Exploitation uneExploitation = new Exploitation(0,"","");
 		setContentView(R.layout.parc);
+		
+		ListView listView = (ListView) findViewById(R.id.listview);
+//		ListView listView = (ListView) findViewById(R.id.ListView1); 
+		listView.setAdapter(new LineAdapterSearch(this));
+		
 		EditText editText = (EditText) findViewById(R.id.Utilisateur_Identifiant); // Déclaration du champ libre "Exploitation_Nom"
 		editText.addTextChangedListener(new TextWatcher() { // Mise en place d'une écoute sur editText 
 			@Override
 			public void afterTextChanged(Editable e) { // Déclaration de la fonction à éxécuter lors d'une touche pressée
 				ListView lv= (ListView)findViewById(R.id.listview); // Déclaration de la ListView (contient la liste des exploitation)
+//				ListView lv= (ListView)findViewById(R.id.ListView1);
 				String textFromEditView = e.toString(); // Récupération du text aprés la touche appuyé
 				Exploitation uneExploitation = new Exploitation(0,"",""); // Instanciation d'une Exploitation vide
 				String[] from = new String[] {"ID", "Nom", "Ville"}; // Création de l'entête des colonnes de la ListView
 				int[] to = new int[] { R.id.Exploitation_ID, R.id.Exploitation_Nom, R.id.Exploitation_Ville}; // Identification des TextView qui recevront les données
+//				SimpleAdapter adapter = new SimpleAdapter(Parc.this, uneExploitation.getListeExploitationSearch(textFromEditView), R.layout.grid_item, from, to); 
 				SimpleAdapter adapter = new SimpleAdapter(Parc.this, uneExploitation.getListeExploitationSearch(textFromEditView), R.layout.grid_item, from, to); 
+//				SimpleAdapter adapter = new SimpleAdapter(Parc.this, uneExploitation.getListeExploitationSearch(textFromEditView), R.layout.line, from, to); 
 				// Déclaration de l'adapter qui contient toutes les données
 				lv.setAdapter(adapter); // Mise en place de l'adapter dans la ListView
 				lv.setOnItemClickListener(new OnItemClickListener() { // Instanciation d'une class qui écoute le clique de la souris sur la listeview "lv"
@@ -67,6 +75,7 @@ public class Parc extends MainActivity {
 			}
 		});
 		ListView lv= (ListView)findViewById(R.id.listview);
+//		ListView lv= (ListView)findViewById(R.id.ListView1);
 		//récupération du bouton grâce à  son ID
 		//Button button = (Button) findViewById(R.id.ButtonEnvoyer);
 		// create the grid item mapping
@@ -74,6 +83,7 @@ public class Parc extends MainActivity {
 		int[] to = new int[] { R.id.Exploitation_ID, R.id.Exploitation_Nom, R.id.Exploitation_Ville};
 		// fill in the grid_item layout
 		SimpleAdapter adapter = new SimpleAdapter(this, uneExploitation.getListeExploitation(), R.layout.grid_item, from, to);
+//		SimpleAdapter adapter = new SimpleAdapter(this, uneExploitation.getListeExploitation(), R.layout.line, from, to);
 		lv.setAdapter(adapter);
 		lv.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView adapterView, View view,
