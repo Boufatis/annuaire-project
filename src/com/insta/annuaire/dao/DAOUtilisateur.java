@@ -20,22 +20,25 @@ public class DAOUtilisateur extends DAO{
 	}
 	
 	public int checkIdentifiant(String Utilisateur_Identifiant,String Utilisateur_Mdp){
-		this.URL = "http://www.projet-ppe.fr/pnr/android/checkUtilisateur.php";
-		nameValuePairs.add(new BasicNameValuePair("Utilisateur_Identifiant",Utilisateur_Identifiant));
-		nameValuePairs.add(new BasicNameValuePair("Utilisateur_Mdp",Utilisateur_Mdp));
-		super.setParametre(this.nameValuePairs);
+		this.URL = "http://dev-project.it:3000/login/" + Utilisateur_Identifiant + "/" + Utilisateur_Mdp;
 		super.setURL(URL);
 		int retour = 0;
 		try
 		{		
-			JSONArray jArray = new JSONArray(super.readResult());
-			JSONObject json_data = jArray.getJSONObject(0);	
-			retour = json_data.getInt("NB_UTILISATEUR");	
-			// BUG ICI, enlever passe par le catch alors que il détecte la bonne valeur (1)
 			
+			//JSONArray jArray = new JSONArray(super.readResult());
+			JSONObject objJSON = new JSONObject(super.readResult());
+			//System.out.println("READ RESULT : " + super.readResult());
+			//System.out.println("JARRAY : " + jArray.toString());
+			
+			//JSONObject json_data = jArray.getJSONObject(0);
+			//System.out.println("JSON DATA : "  +json_data.toString());
+			retour = objJSON.getInt("result");
+			System.out.println("RETOUR : "  + retour);
+			// BUG ICI, enlever passe par le catch alors que il détecte la bonne valeur (1)			
 		}catch(JSONException e)
 		{
-			retour = 0;
+			retour = 3;
 		}		
 		return retour;
 	}

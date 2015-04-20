@@ -56,13 +56,16 @@ public class MainActivity extends Activity {
 	            		Utilisateur unUtilisateur = new Utilisateur();
 	            		switch(unUtilisateur.checkIdentifiant(Utilisateur_Identifiant.getText().toString(), Utilisateur_Password.getText().toString()))
 	            		{
-		            		case 1:
+		            		case 0:
 		            			lblInfoConnect.setText("L'utilisateur est bien identifié.");
 		            			Intent activityChangeIntent = new Intent(MainActivity.this, Parc.class);
 		                        MainActivity.this.startActivity(activityChangeIntent);
 		            			break;
-		            		case 0:
+		            		case 1:
 		            			lblInfoConnect.setText("Les identifiants renseignés ne sont pas correct.");
+		            			break;
+		            		case 3:
+		            			lblInfoConnect.setText("Une erreur à eu lieu !.");
 		            			break;
 	            		}	            		
 	            	}

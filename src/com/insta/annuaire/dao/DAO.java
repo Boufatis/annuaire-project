@@ -10,6 +10,7 @@ import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 
@@ -35,13 +36,13 @@ public class DAO {
 			//Envoyer la requête au script PHP.
 			try{
 				HttpClient httpclient = new DefaultHttpClient();
-				HttpPost httppost = new HttpPost(URL);
-				httppost.setEntity(new UrlEncodedFormEntity(this.Parametre));
+				HttpGet httpget = new HttpGet(URL);
+				//httppost.setEntity(new UrlEncodedFormEntity(this.Parametre));
 				if (android.os.Build.VERSION.SDK_INT > 9) {
 				    StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 				    StrictMode.setThreadPolicy(policy);
 				}
-				HttpResponse response = httpclient.execute(httppost);
+				HttpResponse response = httpclient.execute(httpget);
 				HttpEntity entity = response.getEntity();
 				is = entity.getContent();		
 			}catch(Exception e){
