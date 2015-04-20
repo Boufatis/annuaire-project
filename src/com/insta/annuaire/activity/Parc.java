@@ -36,7 +36,7 @@ public class Parc extends MainActivity {
 		
 		ListView listView = (ListView) findViewById(R.id.listview);
 //		ListView listView = (ListView) findViewById(R.id.ListView1); 
-		listView.setAdapter(new LineAdapterSearch(this));
+//		listView.setAdapter(new LineAdapterSearch(this));
 		
 		EditText editText = (EditText) findViewById(R.id.Utilisateur_Identifiant); // Déclaration du champ libre "Exploitation_Nom"
 		editText.addTextChangedListener(new TextWatcher() { // Mise en place d'une écoute sur editText 

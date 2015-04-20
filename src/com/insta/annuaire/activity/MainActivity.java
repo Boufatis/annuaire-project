@@ -58,7 +58,7 @@ public class MainActivity extends Activity {
 	            		{
 		            		case 0:
 		            			lblInfoConnect.setText("L'utilisateur est bien identifié.");
-		            			Intent activityChangeIntent = new Intent(MainActivity.this, Parc.class);
+		            			Intent activityChangeIntent = new Intent(MainActivity.this, ListContactActivity.class);
 		                        MainActivity.this.startActivity(activityChangeIntent);
 		            			break;
 		            		case 1:
