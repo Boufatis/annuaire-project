@@ -24,8 +24,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.insta.annuaire.activity.Parc"
-            android:label="Listes des exploitations" />
+            android:name="com.insta.annuaire.activity.ListContactActivity"
+            android:label="Liste des contacts" />
          <activity
             android:name="com.insta.annuaire.activity.TabExploitation"
             android:label="Exploitation"/>
