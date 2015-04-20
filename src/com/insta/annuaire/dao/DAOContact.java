@@ -10,6 +10,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.insta.annuaire.Contact;
+
 
 public class DAOContact extends DAO {
 	
@@ -22,50 +24,26 @@ public class DAOContact extends DAO {
 		super("",new ArrayList<NameValuePair>());
 	}
 	
-	public  List<HashMap<String, String>> getListeContactByExploitationId(String Exploitation_Id){
- 		this.URL = "http://www.projet-ppe.fr/pnr/android/getListeContactByExploitationId.php";
-		nameValuePairs.add(new BasicNameValuePair("Exploitation_Id",Exploitation_Id));
-		super.setParametre(this.nameValuePairs);
+	public List<Contact> getListContact(){
+ 		this.URL = "http://dev-project.it:3000/annuaire/get";
 		super.setURL(URL);
-	        // prepare the list of all records
-	        List<HashMap<String, String>> lesContact = new ArrayList<HashMap<String, String>>();
-	        JSONArray jArray;
-			try {
-				jArray = new JSONArray(super.readResult());
-				for(int i = 0; i < jArray.length(); i++){
-		        	JSONObject json_data = jArray.getJSONObject(i);
-					HashMap<String, String> map = new HashMap<String, String>();
-					map.put("Id", "" + json_data.getString("Exploitation_Contact_Id"));
-		            map.put("Nom", "" + json_data.getString("Exploitation_Contact_Nom"));
-		            map.put("Prenom", json_data.getString("Exploitation_Contact_Prenom"));
-		            if(map!=null)
-		            {
-		            	lesContact.add(map);
-		            }	            
-		        }
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}	
-	        
-	        return lesContact;
+        // prepare the list of all records        
+		List<Contact> contacts = new ArrayList<Contact>();
+        JSONArray jArray;
+		try 
+		{
+			JSONObject jobject = new JSONObject(super.readResult());
+			jArray = jobject.getJSONArray("profils");
+			for(int i = 0; i < jArray.length(); i++){
+	        	JSONObject json_data = jArray.getJSONObject(i);	
+	        	contacts.add(new Contact(json_data.getInt("id"), json_data.getString("nom"), json_data.getString("prenom"), json_data.getString("profil"), json_data.getString("promo"), json_data.getString("photo")));       
+			}
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	       
+	    return contacts;
 	}
-	public  String getTelContactById(String Exploitation_Contact_Id){
-		String Contact_Telephone="";
- 		this.URL = "http://www.projet-ppe.fr/pnr/android/getContactTelByID.php";
-		nameValuePairs.add(new BasicNameValuePair("Exploitation_Contact_Id",Exploitation_Contact_Id));
-		super.setParametre(this.nameValuePairs);
-		super.setURL(URL);
-	        // prepare the list of all records
-			try {
-				JSONArray jArray = new JSONArray(super.readResult());
-				JSONObject json_data = jArray.getJSONObject(0);	
-				Contact_Telephone = "tel:"+json_data.getString("NUMERO_TELEPHONE");
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}	        
-	        return Contact_Telephone;
-	}
+	
 }
 

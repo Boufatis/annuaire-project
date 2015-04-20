@@ -1,8 +1,15 @@
 package com.insta.annuaire.activity;
 
+import java.util.List;
+
 import com.insta.gen.annuaire.R;
+import com.insta.annuaire.Contact;
 
 import android.content.Context;
+import android.graphics.Typeface;
+import android.text.SpannableString;
+import android.text.style.StyleSpan;
+import android.text.style.UnderlineSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class ContactAdapter extends ArrayAdapter<String> {
+public class ContactAdapter extends ArrayAdapter<Contact> {
  
     private Integer[] tab_images_pour_la_liste = {
       R.drawable.insta };
@@ -22,11 +29,25 @@ public class ContactAdapter extends ArrayAdapter<String> {
  
         View rowView = inflater.inflate(R.layout.rowcontact, parent, false);
  
-        TextView textView = (TextView) rowView.findViewById(R.id.label);
+        TextView fullname = (TextView) rowView.findViewById(R.id.fullname);
+        TextView libelle = (TextView) rowView.findViewById(R.id.libelle);
+        TextView hiddenId = (TextView) rowView.findViewById(R.id.hiddenId);
         ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
- 
-        textView.setText(getItem(position));	
- 
+        
+        String textLibelle = "";
+        
+        if (getItem(position).getProfil().equals("etudiant")) {
+        	textLibelle = getItem(position).getPromo();
+		} else if (getItem(position).getProfil().equals("professeur")) {
+			textLibelle = "Professeur";
+		} else if (getItem(position).getProfil().equals("administration")) {
+			textLibelle = "Administration";
+		}
+        
+        fullname.setText(getItem(position).getPrenom() + " " + getItem(position).getNom());	
+        libelle.setText(textLibelle);
+        hiddenId.setText("" + getItem(position).getId());
+        
         if(convertView == null )
           imageView.setImageResource(tab_images_pour_la_liste[0]);
         else
@@ -35,8 +56,8 @@ public class ContactAdapter extends ArrayAdapter<String> {
         return rowView;
     }
  
-    public ContactAdapter(Context context, String[] values) {
-        super(context, R.layout.rowcontact, values);
+    public ContactAdapter(Context context,  List<Contact> contact) {
+        super(context, R.layout.rowcontact, contact);
     }
 }
 
