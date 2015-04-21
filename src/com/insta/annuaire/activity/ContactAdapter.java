@@ -3,8 +3,11 @@ package com.insta.annuaire.activity;
 import java.util.List;
 
 import com.insta.gen.annuaire.R;
+import com.insta.annuaire.CircleTransform;
 import com.insta.annuaire.Contact;
+import com.squareup.picasso.Picasso;
 
+import android.app.ListActivity;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.text.SpannableString;
@@ -18,17 +21,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class ContactAdapter extends ArrayAdapter<Contact> {
- 
-    private Integer[] tab_images_pour_la_liste = {
-      R.drawable.insta };
- 
+	public static Context context;
+	
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater = (LayoutInflater)
-          getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
- 
-        View rowView = inflater.inflate(R.layout.rowcontact, parent, false);
- 
+        LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE); 
+        View rowView = inflater.inflate(R.layout.rowcontact, parent, false); 
         TextView fullname = (TextView) rowView.findViewById(R.id.fullname);
         TextView libelle = (TextView) rowView.findViewById(R.id.libelle);
         TextView hiddenId = (TextView) rowView.findViewById(R.id.hiddenId);
@@ -44,20 +42,27 @@ public class ContactAdapter extends ArrayAdapter<Contact> {
 			textLibelle = "Administration";
 		}
         
-        fullname.setText(getItem(position).getPrenom() + " " + getItem(position).getNom());	
+        fullname.setText(getItem(position).getPrenom() + " " + getItem(position).getNom().toUpperCase());	
         libelle.setText(textLibelle);
         hiddenId.setText("" + getItem(position).getId());
         
-        if(convertView == null )
-          imageView.setImageResource(tab_images_pour_la_liste[0]);
-        else
-          rowView = (View)convertView;
- 
+    	if(convertView == null ){    	
+    		if(!getItem(position).getPhoto().isEmpty())
+            {
+    			Picasso.with(this.context).load(getItem(position).getPhoto()).transform(new CircleTransform()).into(imageView);
+            }else{
+            	Picasso.with(this.context).load(R.drawable.user).transform(new CircleTransform()).into(imageView);
+            }
+    	}
+    	else{
+    		rowView = (View)convertView;
+    	}
         return rowView;
     }
  
-    public ContactAdapter(Context context,  List<Contact> contact) {
+    public ContactAdapter(Context context,  List<Contact> contact) {    	
         super(context, R.layout.rowcontact, contact);
+        this.context = context;
     }
 }
 

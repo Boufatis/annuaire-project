@@ -1,5 +1,6 @@
 package com.insta.annuaire.dao;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -43,6 +44,32 @@ public class DAOContact extends DAO {
 			e.printStackTrace();
 		}	       
 	    return contacts;
+	}
+	
+	public Contact getContactById(int id) throws Exception{
+		
+		this.URL = "http://dev-project.it:3000/annuaire/get/"+id;
+		super.setURL(URL);
+		Contact contact = new Contact();
+        JSONArray jArray;
+		try 
+		{
+			JSONObject jobject = new JSONObject(super.readResult());
+			jArray = jobject.getJSONArray("profils");
+	        JSONObject json_data = jArray.getJSONObject(0);	    
+			contact.setId(json_data.getInt("id"));
+			contact.setNom(json_data.getString("nom"));
+			contact.setPrenom(json_data.getString("prenom"));
+			contact.setDateNaissance(json_data.getString("date_naissance"));
+			contact.setProfil(json_data.getString("libelle"));
+			contact.setPromo(json_data.getString("promo"));
+			contact.setMail(json_data.getString("mail"));
+			contact.setTelephone(json_data.getString("telephone"));
+			contact.setPhoto(json_data.getString("photo"));
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}	       
+	    return contact;
 	}
 	
 }
