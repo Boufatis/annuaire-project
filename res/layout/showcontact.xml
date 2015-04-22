@@ -5,13 +5,124 @@
     android:padding="15dip" >
 
     <ImageView
-        android:id="@+id/photoContact"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:id="@+id/imageView1"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_above="@+id/telephone"
         android:layout_alignParentLeft="true"
+        android:src="@drawable/mail1" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignBottom="@+id/telephone"
+        android:layout_alignLeft="@+id/imageView1"
+        android:src="@drawable/phone" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignBottom="@+id/datenaissance"
+        android:layout_alignLeft="@+id/imageView1"
+        android:src="@drawable/gateau" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignBottom="@+id/promo"
+        android:layout_alignLeft="@+id/imageView2"
+        android:src="@drawable/promo" />
+
+    <TextView
+        android:id="@+id/telephone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/mail"
+        android:layout_below="@+id/mail"
+        android:layout_marginTop="22dp"
+        android:text="Téléphone : "
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+<!--         android:layout_toLeftOf="@+id/nom" -->
+
+
+<!--     <TextView -->
+<!--         android:id="@+id/nom" -->
+<!--         android:layout_width="wrap_content" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:layout_alignBaseline="@+id/prenom" -->
+<!--         android:layout_alignBottom="@+id/prenom" -->
+<!--         android:layout_alignParentRight="true" -->
+<!--         android:text="Nom : " -->
+<!--         android:textAppearance="?android:attr/textAppearanceMedium" /> -->
+
+    <TextView
+        android:id="@+id/prenom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="15dp"
+        android:text="Prenom : "
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+<!--         android:layout_alignRight="@+id/profil" -->
+
+
+    <TextView
+        android:id="@+id/promo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/telephone"
+        android:layout_below="@+id/telephone"
+        android:layout_marginTop="21dp"
+        android:text="Promo : "
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/datenaissance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/imageView3"
+        android:text="Date de naissance : "
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignBottom="@+id/profil"
+        android:layout_toLeftOf="@+id/profil"
+        android:src="@drawable/profil" />
+
+    <TextView
+        android:id="@+id/profil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/datenaissance"
+        android:layout_below="@+id/datenaissance"
+        android:layout_marginTop="22dp"
+        android:text="Profil : "
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+<!--         android:layout_above="@+id/imageView3" -->
+        
+
+    <TextView
+        android:id="@+id/mail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/profil"
+        android:layout_below="@+id/profil"
+        android:layout_marginTop="26dp"
+        android:text="Mail : "
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <ImageView
+        android:id="@+id/photoContact"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:layout_below="@+id/prenom"
+        android:layout_centerHorizontal="true"
         android:src="@drawable/insta" />
 
 </RelativeLayout>

@@ -6,6 +6,7 @@
 <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+<uses-permission android:name="android.permission.SEND_SMS"/>
     <uses-sdk
         android:minSdkVersion="11"
         android:targetSdkVersion="19" />
@@ -29,16 +30,8 @@
             android:windowSoftInputMode="stateHidden"/>
         
          <activity
-            android:name="com.insta.annuaire.activity.TabExploitation"
-            android:label="Exploitation"/>
-         <activity
-            android:name="com.insta.annuaire.activity.uneExploitation"
-            android:label="Exploitation"
-            android:theme="@android:style/Theme.NoTitleBar" />
-         <activity
-        	android:name="com.insta.annuaire.activity.ContactExploitation"
-            android:label="Exploitation"
-            android:theme="@android:style/Theme.NoTitleBar" />
+            android:name="com.insta.annuaire.activity.ShowContactActivity"
+            android:label="Fiche contact"/>
     </application>
 
 </manifest>

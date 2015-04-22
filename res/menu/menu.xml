@@ -1,4 +1,28 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-  <item android:id="@+id/back_title"
-          android:title="Retour" />
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    
+    <item
+        android:id="@+id/menu_call"
+        android:icon="@drawable/ic_action_settings"
+        android:showAsAction="never"
+        android:title="@string/action_phone"/>
+    
+     <item
+        android:id="@+id/menu_sms"
+        android:icon="@drawable/ic_action_settings"
+        android:showAsAction="never"
+        android:title="@string/action_sms"/>
+     
+     <item
+        android:id="@+id/menu_mail"
+        android:icon="@drawable/ic_action_settings"
+        android:showAsAction="never"
+        android:title="@string/action_mail"/>
+     
+         <item
+        android:id="@+id/menu_back"
+        android:icon="@drawable/ic_action_settings"
+        android:showAsAction="never"
+        android:title="@string/action_back"/>
+
 </menu>

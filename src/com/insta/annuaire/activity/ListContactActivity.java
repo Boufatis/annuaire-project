@@ -9,6 +9,7 @@ import com.squareup.picasso.Picasso;
 import Enum.EnumOrder;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -21,6 +22,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -50,32 +52,9 @@ public class ListContactActivity extends Activity{
 			{
 				String  contactid = ((TextView)view.findViewById(R.id.hiddenId)).getText().toString();
 				int idContact = Integer.parseInt(contactid);
-				DAOContact daoContact = new DAOContact();
-				Contact contact = new Contact();
-				try {
-					contact = daoContact.getContactById(idContact);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-//				Toast.makeText(ListContactActivity.this, contact.getNom(), Toast.LENGTH_SHORT).show();
-		        LayoutInflater factory = LayoutInflater.from(ListContactActivity.this);
-		        final View alertDialogView = factory.inflate(R.layout.showcontact, null);
-		        AlertDialog.Builder adb = new AlertDialog.Builder(ListContactActivity.this);
-		        adb.setView(alertDialogView);
-		        adb.setTitle(contact.getPrenom()+ " "+contact.getNom().toUpperCase());       
-		        ImageView photo = (ImageView)alertDialogView.findViewById(R.id.photoContact);
-		        if(!contact.getPhoto().isEmpty())
-		        {
-					Picasso.with(ListContactActivity.this).load(contact.getPhoto()).transform(new CircleTransform()).into(photo);
-		        }else{
-		        	Picasso.with(ListContactActivity.this).load(R.drawable.user).transform(new CircleTransform()).into(photo);
-		        }
-		        //adb.setIcon(android.R.drawable.ic_dialog_alert);
-		        adb.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-		            public void onClick(DialogInterface dialog, int which) {
-
-		          } });
-		        adb.show();
+				Intent showContact = new Intent(ListContactActivity.this, ShowContactActivity.class);
+				showContact.putExtra("contactid", idContact);
+				ListContactActivity.this.startActivity(showContact);
 			}
         });
         inputSearch.addTextChangedListener(new TextWatcher() {

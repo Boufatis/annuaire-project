@@ -9,6 +9,7 @@ import java.util.Locale;
 import java.util.TimeZone;
 import java.sql.*;
 
+import android.text.format.DateFormat;
 import android.text.method.DateTimeKeyListener;
 
 public class Contact {
@@ -53,7 +54,7 @@ public class Contact {
 		this.prenom = prenom;
 	}
 	public String getPromo() {
-		return promo;
+		return "Promo "+promo;
 	}
 	public void setPromo(String promo) {
 		this.promo = promo;
@@ -77,8 +78,10 @@ public class Contact {
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
-	public Date getDateNaissance() {
-		return dateNaissance;
+	public String getDateNaissance() {
+		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+		String date = format.format(dateNaissance);
+		return date;
 	}
 	public void setDateNaissance(String dateNaissance) throws ParseException  {
 		TimeZone tz = TimeZone.getTimeZone("Europe/Paris");
@@ -90,7 +93,11 @@ public class Contact {
 		this.dateNaissance = date;
 	}
 	public String getTelephone() {
-		return telephone;
+		if(telephone.isEmpty()||telephone.equals("null")){
+			return "Inconnu";
+		}else{
+			return telephone;
+		}
 	}
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
