@@ -7,7 +7,7 @@
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
     <uses-sdk
-        android:minSdkVersion="9"
+        android:minSdkVersion="11"
         android:targetSdkVersion="19" />
 
     <application
@@ -20,13 +20,14 @@
             android:label="Annuaire insta" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name="com.insta.annuaire.activity.ListContactActivity"
-            android:label="Liste des contacts" />
+            android:label="Liste des contacts" 
+            android:windowSoftInputMode="stateHidden"/>
+        
          <activity
             android:name="com.insta.annuaire.activity.TabExploitation"
             android:label="Exploitation"/>
