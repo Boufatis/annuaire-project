@@ -57,14 +57,6 @@
 <!--         android:layout_alignParentRight="true" -->
 <!--         android:text="Nom : " -->
 <!--         android:textAppearance="?android:attr/textAppearanceMedium" /> -->
-
-    <TextView
-        android:id="@+id/prenom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:text="Prenom : "
-        android:textAppearance="?android:attr/textAppearanceMedium" />
 <!--         android:layout_alignRight="@+id/profil" -->
 
 
@@ -76,15 +68,6 @@
         android:layout_below="@+id/telephone"
         android:layout_marginTop="21dp"
         android:text="Promo : "
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/datenaissance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/imageView3"
-        android:text="Date de naissance : "
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <ImageView
@@ -121,8 +104,44 @@
         android:id="@+id/photoContact"
         android:layout_width="170dp"
         android:layout_height="170dp"
-        android:layout_below="@+id/prenom"
         android:layout_centerHorizontal="true"
         android:src="@drawable/insta" />
+
+    <TextView
+        android:id="@+id/contactid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="TextView"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/prenom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/nom"
+        android:layout_alignLeft="@+id/imageView3"
+        android:text="Prenom : "
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/nom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/prenom"
+        android:layout_below="@+id/photoContact"
+        android:text="Nom"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/datenaissance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nom"
+        android:layout_marginTop="32dp"
+        android:layout_toRightOf="@+id/imageView3"
+        android:text="Date de naissance : "
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>

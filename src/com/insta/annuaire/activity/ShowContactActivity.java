@@ -2,6 +2,7 @@ package com.insta.annuaire.activity;
 
 import com.insta.annuaire.CircleTransform;
 import com.insta.annuaire.Contact;
+import com.insta.annuaire.DatabaseHandler;
 import com.insta.annuaire.dao.DAOContact;
 import com.insta.gen.annuaire.R;
 import com.squareup.picasso.Picasso;
@@ -21,7 +22,15 @@ import android.widget.Toast;
 
 public class ShowContactActivity extends Activity {
 	TextView telephone;
+	TextView nom;
 	TextView mail;
+//	TextView id;
+	int id;
+	TextView prenom;
+	TextView dateNaissance;
+	TextView profil;
+	TextView promo;
+	String photoUrl;
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,20 +47,25 @@ public class ShowContactActivity extends Activity {
 		}
         
         ImageView photo = (ImageView)findViewById(R.id.photoContact);
-
-        TextView prenom = (TextView)findViewById(R.id.prenom);
-        TextView dateNaissance = (TextView)findViewById(R.id.datenaissance);
-        TextView profil = (TextView)findViewById(R.id.profil);
+//        id = (TextView)findViewById(R.id.contactid);
+        prenom = (TextView)findViewById(R.id.prenom);
+        nom = (TextView)findViewById(R.id.nom);
+        dateNaissance = (TextView)findViewById(R.id.datenaissance);
+        profil = (TextView)findViewById(R.id.profil);
         mail = (TextView)findViewById(R.id.mail);
         telephone = (TextView)findViewById(R.id.telephone);
-        TextView promo = (TextView)findViewById(R.id.promo);
+        promo = (TextView)findViewById(R.id.promo);
         
-        prenom.setText(contact.getPrenom()+" "+ contact.getNom().toUpperCase());
+//        id.setText(contact.getId());
+        id = idContact;
+        prenom.setText(contact.getPrenom());
+        nom.setText(contact.getNom().toUpperCase());
         dateNaissance.setText(contact.getDateNaissance());
         profil.setText(contact.getProfil());
         mail.setText(contact.getMail());
         telephone.setText(contact.getTelephone());
         promo.setText(contact.getPromo());
+        photoUrl = contact.getPhoto();
         
         if(!contact.getPhoto().isEmpty())
         {
@@ -79,7 +93,7 @@ public class ShowContactActivity extends Activity {
 	  			
 	  			Toast.makeText(this, "Numéro de téléphone non renseigné", Toast.LENGTH_SHORT).show();
 	  		}
-	  		
+	  		return true;	
 	  	case R.id.menu_sms:
 	  		String telMsg = telephone.getText().toString();
 	  		if(!telMsg.equals("Inconnu")){
@@ -88,14 +102,28 @@ public class ShowContactActivity extends Activity {
 	  			
 	  			Toast.makeText(this, "Numéro de téléphone non renseigné", Toast.LENGTH_SHORT).show();
 	  		}
-	  		
+	  		return true;
 	  	case R.id.menu_mail:
 	  		String mailSend = mail.getText().toString();
 	  		startActivity(new Intent(Intent.ACTION_SENDTO,Uri.parse("mailto:"+mailSend)));
+	  		return true;
+	  	case R.id.menu_favoris:
+	  		Intent goFavoris = new Intent(ShowContactActivity.this, FavoriteActivity.class);
+	  		ShowContactActivity.this.startActivity(goFavoris);
+	  		return true;	
+	  	case R.id.menu_ajouterfavoris:
+	  		DatabaseHandler db = new DatabaseHandler(ShowContactActivity.this);
+	  		db.addUser(id, nom.getText().toString(), prenom.getText().toString(), profil.getText().toString(), promo.getText().toString(), photoUrl);
+	  		Toast.makeText(this, "Le contact a bien été ajouté aux favoris.", Toast.LENGTH_SHORT).show();
+	  		return true;
 	  	case R.id.menu_back:
 	  		Intent ListActivity = new Intent(ShowContactActivity.this, ListContactActivity.class);
 	  		ShowContactActivity.this.startActivity(ListActivity);
 	  		return true;
+	  	case R.id.menu_deconexion:
+	  		Intent deconexion = new Intent(ShowContactActivity.this, MainActivity.class);
+	  		ShowContactActivity.this.startActivity(deconexion);
+			return true;
 	  	default:
 	  		return super.onOptionsItemSelected(item);
 	  	}

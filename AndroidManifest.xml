@@ -32,6 +32,9 @@
          <activity
             android:name="com.insta.annuaire.activity.ShowContactActivity"
             android:label="Fiche contact"/>
+         <activity
+            android:name="com.insta.annuaire.activity.FavoriteActivity"
+            android:label="Favoris"/>     
     </application>
 
 </manifest>

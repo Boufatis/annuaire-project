@@ -5,7 +5,4 @@
     <string name="action_phone">Appeler</string>
     <string name="action_sms">SMS</string>
     <string name="action_mail">Mail</string>
-    <string name="action_favoris">Favoris</string>
-    <string name="action_ajouterfavoris">Ajouter aux favoris</string>
-    <string name="action_deconexion">Déconnexion</string>
 </resources>
